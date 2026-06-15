@@ -50,7 +50,7 @@ export default function LogsPage() {
     ? logs.filter((l) => l.recipient.toLowerCase().includes(search.toLowerCase()) || l.id.toLowerCase().includes(search.toLowerCase()) || l.status.toLowerCase().includes(search.toLowerCase()))
     : logs;
   const total = logs.length;
-  const delivered = logs.filter((l) => l.status === "delivered").length;
+  const delivered = logs.filter((l) => ["delivered", "opened", "clicked", "converted"].includes(l.status)).length;
   const failed = logs.filter((l) => l.status === "failed" || l.status === "bounced").length;
 
   return (
